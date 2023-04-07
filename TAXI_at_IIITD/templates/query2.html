@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+{% block title %}query2{% endblock title %}
+{% block body %}
+
+<style>
+    .q1bg{
+        background-color: antiquewhite;
+    }
+    .headings{
+        text-align: center;
+        color:black;
+        background-color:antiquewhite;
+        /* padding-top: 20px; */
+        /* margin-top: 20px; */
+        /* margin-bottom: 0px; */
+        margin-right: auto;
+        padding-bottom: 0px;
+        display:block;
+
+    }
+
+</style>
+
+<div class="q1bg">
+    <h3 class = "headings">THIS IS PYTHON EMBEDDED QUERY 2</h3>
+    <h3 class = "headings">SELECT payment.payment_ID, passenger.passenger_ID, passenger.first_name,<br> passenger.last_name, payment.Fare
+FROM passenger
+<br>LEFT JOIN payment on payment.pass_ID = passenger.passenger_ID;</h3>
+    <h2 class = "headings"><br>This query tells us what passenger has made their payments and who hasn't done yet</h2>
+    <div class="table-responsive">
+        <table class="table table-primary"  >
+            <thead>
+                <tr>
+                    <th scope="col">Payment_ID</th>
+                    <th scope="col">Passenger_ID</th>
+                    <th scope="col">First_name</th>
+                    <th scope="col">Last_name</th>
+                    <th scope="col">Fare</th>
+                    
+                </tr>
+            </thead>
+            <tbody>
+        
+            {% for query2Model in query2Model%}
+                <tr>
+                    <td>{{query2Model.0}}</td>
+                    <td>{{query2Model.1}}</td>
+                    <td>{{query2Model.2}}</td>
+                    <td>{{query2Model.3}}</td>
+                    <td>{{query2Model.4}}</td>
+                </tr>
+            {% endfor %}
+                    
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock body %} 

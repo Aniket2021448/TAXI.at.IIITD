@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+{% block title %}query1{% endblock title %}
+{% block body %}
+<style>
+    .q1bg{
+        background-color: antiquewhite;
+    }
+    .headings{
+        text-align: center;
+        color:black;
+        background-color:antiquewhite;
+        /* padding-top: 20px; */
+        /* margin-top: 20px; */
+        /* margin-bottom: 0px; */
+        margin-right: auto;
+        padding-bottom: 0px;
+        display:block;
+
+    }
+
+</style>
+
+<div class="q1bg">
+    <h3 class = "headings">THIS IS PYTHON EMBEDDED QUERY 1</h3>
+    <h3 class = "headings">SELECT * FROM cab WHERE cab_location LIKE '%Room%' OR cab_location LIKE 'PO%';</h3>
+    <h2 class = "headings"><br>This query gives us all the cabs in the given area</h2>
+    <div class="table-responsive">
+        <table class="table table-primary"  >
+            <thead>
+                <tr>
+                    <th scope="col">Cab_ID</th>
+                    <th scope="col">Owner_name</th>
+                    <th scope="col">Number_plate</th>
+                    <th scope="col">Model</th>
+                    <th scope="col">Cab_location</th>
+                    <th scope="col">PickUp</th>
+                    <th scope="col">Destination</th>
+                </tr>
+            </thead>
+            <tbody>
+        
+            {% for row in rows %}
+                <tr>
+                    {% for value in row %}
+                        <td>{{ value }}</td>
+                    {% endfor %}
+                </tr>
+            {% endfor %}
+                    
+            </tbody>
+        </table>
+    </div>
+</div>
+
+{% endblock body %} 

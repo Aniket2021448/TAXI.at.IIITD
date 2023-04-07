@@ -1,0 +1,72 @@
+{% extends 'base.html' %}
+{% block title %}Trigger1{% endblock title %}
+{% block body %}
+
+<style>
+    .t1bg{
+        background-color: antiquewhite;
+    }
+    .headings{
+        text-align: center;
+        color:black;
+        background-color:antiquewhite;
+        padding-top: 20px;
+        /* margin-top: 20px; */
+        /* margin-bottom: 0px; */
+        margin-right: auto;
+        padding-bottom: 0px;
+        display:block;
+
+    }
+    .result{
+        
+        margin-top: 0px;
+        padding-top: 10px;
+        padding-left: 300px;
+    }
+    .lines{
+        margin: 30px;
+        padding: 30px;
+        padding-bottom: 0px;
+    }
+
+
+</style>
+
+<div class="t1bg">
+    
+    <h1 class="headings">This is my Trigger 1</h1>
+    <h2 class="headings">Triggers a message on entering age less than 18</h3>
+        <hr class="lines">
+        <div class = "result">
+            DELIMITER //<br>
+            CREATE TRIGGER DriverAgeChecker<br>
+            BEFORE INSERT ON driver<br>
+            FOR EACH ROW<br>
+            BEGIN<br>
+              IF TIMESTAMPDIFF(YEAR, NEW.date_of_birth, NOW()) < 18 THEN<br>
+                SIGNAL SQLSTATE '45000'<br>
+                SET MESSAGE_TEXT = 'Aagya kal ka paida hua, 18 ka ho pehle.';<br>
+              END IF;<br>
+            END //<br>
+            DELIMITER ;<br>
+        
+        </div>
+        <h3 class="headings">Checker commands</h3>
+        <hr class = "lines">
+        <div class ="result">
+            INSERT INTO driver (driver_ID, first_name, last_name, D_Email, Gender, date_of_birth, license_no)<br>
+VALUES (2020102, 'aryan', 'sharma', 'aryan213@gmail.com', 'Female', '2002-02-18','232zvn817yx');<br>
+        <br>
+INSERT INTO driver (driver_ID, first_name, last_name, D_Email, Gender, date_of_birth, license_no)<br>
+VALUES (2020101, 'aniket', 'sharma', 'aniket1257@gmail.com', 'male', '2010-02-18','232zvn817yx');<br>
+            <br><br><br>
+        </div>
+
+
+    <div class="d-grid gap-2 col-2 mx-auto">
+        <a href="./checkTrigger1.html"><button class="btn btn-primary" type="button" name ="checkTrigger1">CHECK TRIGGER 1</button></a>
+    </div>
+</div>
+
+{% endblock body %} 

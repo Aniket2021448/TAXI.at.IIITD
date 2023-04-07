@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% block title %}trigger1{% endblock title %}
+<style>
+    .btn btn-primary{
+        display: inline
+        width: 30%
+    }
+</style>
+{% block body %}
+<h4>
+    <BR>QUERY I USED TO CHECK THE TRIGGER:<br><hr>
+        INSERT INTO d_contacts (driver_ID, contact)<br>
+        VALUES (2020102, 98992685);<br><hr><br>
+</h4>
+<h5>This trigger prevents the driver to input wrong or incomplete mobile number
+    <br>Same can be done with passenger also
+</h5>
+    <div class="table-responsive">
+        <table class="table table-primary">
+            <thead>
+                <tr>
+                    <th scope="col">driver_ID</th>
+                    <th scope="col">Contact</th>
+                </tr>
+            </thead>
+            <tbody>
+        
+            {% for row in rows %}
+                <tr>
+                    {% for value in row %}
+                        <td>{{ value }}</td>
+                    {% endfor %}
+                </tr>
+            {% endfor %}
+                    
+            </tbody>
+        </table>
+    </div>
+
+
+{% endblock body %} 
+
