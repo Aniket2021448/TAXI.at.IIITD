@@ -1,0 +1,76 @@
+{% extends 'base.html' %}
+{% block title %}Payment{% endblock title %}
+<style>
+    .box {
+        border: 1px solid #ccc;
+        padding: 20px;
+        text-align: center;
+        margin: 0 auto;
+        width: 50%;
+    }
+</style>
+
+{% block body %}
+
+{% comment %} 
+driverName: 
+driver ID:
+cab number plate:
+car model: 
+pickup:
+destination: 
+
+Button: Make Payment
+{% endcomment %}
+{% comment %} 
+<img style="position: absolute; padding-left: 465px; height:100%;
+text-align: justify;"src="https://5.imimg.com/data5/GLADMIN/Default/2021/7/TM/NS/XL/50594186/call-taxi-services-500x500.jpg" alt="">
+ {% endcomment %}
+{% comment %} <img style="display: inline-block;float: right; padding-left: 10px; height:100%; text-align: justify;" src="https://5.imimg.com/data5/GLADMIN/Default/2021/7/TM/NS/XL/50594186/call-taxi-services-500x500.jpg" alt=""> {% endcomment %}
+
+<form style="padding:100px; display: inline-block; text-align: justify;"  method="POST">
+    {% csrf_token %}
+    <div class="box">
+        <h2><strong>Booked cab details:</strong></h2><br>
+        {% comment %} <p>Passenger ID: {{ user.passengerID }}</p>
+        <p>Name: {{ user.name }}</p>
+        <p>Email: {{ user.email }}</p> {% endcomment %}
+    
+        <h4><strong>Cab Details:</strong></h4>
+        <p><strong>Cab ID:</strong> &nbsp&nbsp&nbsp {{ cab.cab_id }}</p>
+        {% comment %} <p>Make:&nbsp&nbsp&nbsp {{ cab.make }}</p> {% endcomment %}
+        <p><strong>Car Model:</strong> &nbsp&nbsp&nbsp {{ cab.model }}</p>
+        <p><strong>Car Number:</strong> &nbsp&nbsp&nbsp {{ cab.number_plate }}</p>
+        <p><strong>PickUp location:</strong> &nbsp&nbsp&nbsp {{ bookingDetails.pickup }}</p>
+        <p><strong>Destination location:</strong>&nbsp&nbsp&nbsp {{ bookingDetails.destination }}</p>
+        
+        
+    
+        {% comment %} <p>Year:&nbsp&nbsp&nbsp {{ cab.year }}</p> {% endcomment %}
+    <br>
+        <h4><strong>Driver Details:</strong></h4>
+        <p><strong>Driver ID:</strong> &nbsp&nbsp&nbsp {{ driver.driver_id }}</p>
+        <p><strong>Driver Name:</strong> &nbsp&nbsp&nbsp {{ driver.first_name }}</p>
+        {% comment %} <p><strong>Phone Number:</strong> &nbsp&nbsp&nbsp{{ Dcontact.phone }}</p>  {% endcomment %}
+        <button type="submit" formaction ="{% url 'moveToPay' %}" class="btn btn-success">Make Payment</button>
+        <button type="submit" formaction ="{% url 'cancelCab' %}" class="btn btn-danger">Cancel Cab</button>
+    
+    </div>
+</form>
+
+
+{% comment %} 
+Enter card details
+
+cardnumber: 
+CVV:
+Expiry:
+Holder's name:
+<-- account ID: 2021632 -->
+
+button: pay now
+1 transaction.
+
+{% endcomment %}
+
+{% endblock body %} 

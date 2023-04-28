@@ -40,6 +40,13 @@ INSTALLED_APPS = [
     'deadline5.apps.Deadline5Config'
 ]
 
+AUTHENTICATION_BACKENDS = [
+    'django.contrib.auth.backends.ModelBackend', # default backend
+    'deadline5.backends.AccountBackend', # custom backend
+]
+
+MESSAGE_STORAGE = 'django.contrib.messages.storage.session.SessionStorage'
+
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',

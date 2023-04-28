@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+{% block title %}Book CAB{% endblock title %}
+{% block body %}
+
+
+{% if messages %}
+    {% for message in messages %}
+        <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+            {{ message }}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <script>
+            $(".alert").alert();
+        </script>
+    {% endfor %}
+{% endif %}
+
+
+
+
+{% comment %} image {% endcomment %}
+<div class="bg-image d-flex justify-content-center align-items-center"
+     style="background-image: url('https://img.freepik.com/free-vector/taxi-app-concept-illustration_52683-36028.jpg?w=1060&t=st=1682348543~exp=1682349143~hmac=e81e28729adb5b353056931498f00a62dd7c1fb0808ceedbd4f4b8fbeb62585b')
+     ; background-size: cover; background-position: center; height: 100vh;">
+  <div class="container text-center">
+    
+    {% comment %} TOP HEADINGS {% endcomment %}
+    <h1 style="color: black; position: relative; text-align: center; color:ye ; ">Hi, {{name}}, welcome to the app</h1>
+    <h2 style="position: relative; text-align: center; color: black; text-align:center;" >BOOK YOUR RIDE</h1>
+    
+        
+{% comment %} FORM which takes pickup and destination {% endcomment %}
+      <form style="color: black" method="POST" action="{% url 'bookcab' %}" >
+        {%csrf_token%}
+        <div style="display:flex; flex-direction: row; justify-content: center; align-items: center">
+          <label for="pickup"><strong>Pickup Location:</strong>&nbsp&nbsp</label><br>
+          <input type="text" size="60px" id="pickup" name="pickup" placeholder="Enter your PickUP point"><br>
+        </div>
+        <div style="display:flex; flex-direction: row; justify-content: center; align-items: center">
+          <label for="destination"><strong>Destination: </strong>&nbsp&nbsp</label><br>
+          <input type="text" size="60px"id="destination" name="destination" placeholder="Enter your Destination point"><br><br>
+        </div>
+
+        <button type="submit" class="btn btn-success" name="bookcab" >BOOK CAB</button>
+
+    </form>
+
+
+
+  </div>
+</div>
+
+
+
+
+
+
+{% endblock body %} 

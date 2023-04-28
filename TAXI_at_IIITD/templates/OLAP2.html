@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% block title %}OLAP2{% endblock title %}
+{% block body %}
+<style>
+    body{
+        background-color: antiquewhite;
+    }
+</style>
+<h2 style="padding-bottom: 0px; padding-top: 20px; padding-left: 40px;" ><strong>This is OLAP2</strong></h2>
+<h5 style=" padding: 10px 40px ;">
+    SELECT passenger.passenger_ID,  passenger.Gender, DATE_FORMAT(ride_date, '%Y-%m-%d') AS day, COUNT(*) AS total_rides, SUM(fare) AS total_revenue<br>
+FROM bookedcab<br>
+INNER JOIN passenger ON passenger.passenger_ID = bookedCab.passenger_ID<br>
+INNER JOIN payment ON passenger.passenger_ID = payment.pass_ID<br>
+WHERE ride_date >= '2022-01-01' AND ride_date <= '2022-12-31' <br>
+GROUP BY DAY(ride_date),DATE_FORMAT(ride_date, '%Y-%m-%d'), passenger.Gender, passenger.passenger_ID WITH ROLLUP<br>
+ORDER BY  day desc,total_revenue desc;<br>
+</h5><hr style="margin: 0px 30px;">
+
+    <div class="table-responsive p-4" style="margin: 0px auto; width: 90%; table-layout: fixed;" >
+        <table style="margin: 20px 20px; size: 80%"class="table table-primary"  >
+            <thead>
+                <tr>
+                    <th scope="col">Passenger_ID</th>
+                    <th scope="col">Gender</th>
+                    <th scope="col">Date</th>
+                    <th scope="col">Total rides</th>
+                    <th scope="col">Total revenue</th>
+                </tr>
+            </thead>
+            <tbody>
+        
+            {% for row in rows %}
+                <tr>
+                    {% for value in row %}
+                        <td>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp{{ value }}</td>
+                    {% endfor %}
+                </tr>
+            {% endfor %}
+                    
+            </tbody>
+        </table>
+    </div>
+
+
+
+{% endblock body %} 

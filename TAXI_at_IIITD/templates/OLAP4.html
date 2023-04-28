@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% block title %}OLAP4{% endblock title %}
+{% block body %}
+<style>
+    body{
+        background-color: antiquewhite;
+    }
+</style>
+<h2 style="padding-bottom: 0px; padding-top: 20px; padding-left: 40px;" ><strong>This is OLAP4</strong></h2>
+<h5 style=" padding: 20px;">
+    -- total number of rides done by passanger in 2022<br>
+    -- JOIN krke saare required data nikal liye, phir uske baad outisde query me se total rides ka count<br>
+-- extract krliya, jisme 2022 ka date pe ek filter lga liya.<br>
+-- Made using multiple groups as grounping sets<br>
+    </h5><hr style="margin: 0px 30px;">
+
+    <div class="table-responsive p-4" style="margin: 0px auto; width: 90%; table-layout: fixed;" >
+        <table style="margin: 20px 20px; size: 80%"class="table table-primary"  >
+            <thead>
+                <tr>
+                    <th scope="col">First name</th>
+                    <th scope="col">Last name</th>
+                    <th scope="col">YEAR of payment</th>
+                    <th scope="col">Total rides</th>
+                </tr>
+            </thead>
+            <tbody>
+        
+            {% for row in rows %}
+                <tr>
+                    {% for value in row %}
+                        <td>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp{{ value }}</td>
+                    {% endfor %}
+                </tr>
+            {% endfor %}
+                    
+            </tbody>
+        </table>
+    </div>
+
+{% endblock body %} 

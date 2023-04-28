@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+{% block title %}Login{% endblock title %}
+{% block body %}
+<div class="outerBox" style="border: 2px solid black; padding:10px ; margin: 40px; background-color: antiquewhite;">
+    <h1 style="text-align: center; padding-top: 50px ; font-size: 50px; text-decoration:underline;">WELCOME as DRIVER</h1>
+    
+    <form style="padding: 20px 200px" method="POST" action="/driverUI.html">
+        {%csrf_token%}
+        <div class="form-group row mt-2 ">
+            <label for="firstname" class="col-sm-2 col-form-label">First name</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" id="firstname" name="firstname"
+                    placeholder="Enter your first name">
+            </div>
+        </div>
+        <div class="form-group row mt-2 ">
+            <label for="lastname" class="col-sm-2 col-form-label">Last name</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" id="lastname" name="lastname"
+                    placeholder="Enter your last name">
+            </div>
+        </div>
+        <div class="form-group row mt-2">
+            <label for="email" class="col-sm-2 col-form-label">Email</label>
+            <div class="col-sm-10">
+              <input type="email" class="form-control" id="email" name = "email" placeholder="Enter your Email">
+            </div>
+        </div>
+        
+        <div class="form-group row mt-2 ">
+            <label for="gender" class="col-sm-2 col-form-label">Gender</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" id="gender" name="gender"
+                    placeholder="Enter your gender">
+            </div>
+        </div>
+
+        <div class="form-group row mt-2">
+            <label for="dob" class="col-sm-2 col-form-label">Date of birth</label>
+            <div class="col-sm-10">
+                <input type="date" class="form-control" id="dob" name="dob"
+                    placeholder="Enter your DOB in yyyy-mm-dd">
+            </div>
+        </div>
+
+        <div class="form-group row mt-2">
+            <label for="license" class="col-sm-2 col-form-label">License no.</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" id="license_no" name="license_no"
+                    placeholder="Enter your license number">
+            </div>
+        </div>
+
+        <div class="form-group row mt-2">
+            <div class="col-sm-10">
+                <button type="submit" name ="saveDriver"class="btn btn-primary">Register</button>
+            </div>
+        </div>
+
+    </form>
+</div>
+{% endblock body %} 
